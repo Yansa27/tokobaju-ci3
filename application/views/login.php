@@ -1,42 +1,47 @@
 <?php $this->load->view('header'); ?>
-<div class="hero-wrap hero-bread" style="background-image: url('<?= base_url('assets/home/images/fc2.jpg'); ?>');">
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('index'); ?>">Home</a></span> <span>Login</span></p>
-                <h1 class="mb-0 bread">Login</h1>
-            </div>
-        </div>
+<div class="container">
+    <div class="cart-list">
+        <table class="table">
+            <thead class="thead-primary">
+                <tr class="text-center">
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($keranjang)) : ?>
+                    <?php foreach ($keranjang as $item) : ?>
+                        <tr class="text-center">
+                            <td class="product-remove">
+                                <a href="<?php echo base_url('keranjang/hapus/') . $item['idproduk']; ?>"><span class="ion-ios-close"></span></a>
+                            </td>
+                            <td class="image-prod">
+                                <div class="img" style="background-image:url(<?php echo base_url('assets/foto/') . $item['fotoproduk']; ?>);"></div>
+                            </td>
+                            <td class="product-name">
+                                <h3><?php echo $item['namaproduk']; ?></h3>
+                            </td>
+                            <td class="price">Rp <?php echo number_format($item['hargaproduk']); ?></td>
+                            <td class="quantity"><?php echo $item['jumlah']; ?></td>
+                            <td class="total">Rp <?php echo number_format($item['totalharga']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="6" class="text-center">Keranjang kosong</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+        <p class="text-center">
+            <a href="<?php echo base_url('produk'); ?>" class="btn btn-warning">Lanjutkan Belanja</a>
+            <a href="<?php echo base_url('checkout'); ?>" class="btn btn-danger">Checkout</a>
+        </p>
     </div>
 </div>
 
-<section id="home-section" class="ftco-section">
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <img width="100%" src="<?= base_url('assets/foto/daftar.png'); ?>">
-            </div>
-            <div class="col-md-7 my-auto">
-                <h1><span>Login</span></h1>
-                <?php if ($this->session->flashdata('error')): ?>
-                    <div class="alert alert-danger">
-                        <?= $this->session->flashdata('error'); ?>
-                    </div>
-                <?php endif; ?>
-                <form method="post" action="<?= base_url('index.php/login/authenticate'); ?>">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password" required>
-                    </div>
-                    <br>
-                    <button class="btn btn-danger btn-block" type="submit">Masuk</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 <?php $this->load->view('footer'); ?>

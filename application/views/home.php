@@ -73,12 +73,12 @@
             <?php foreach ($produk as $perproduk): ?>
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="product">
-                        <a href="<?php echo base_url('detail/'.$perproduk['idproduk']); ?>" class="img-prod">
+                        <a href="<?php echo site_url('produk/detail/'.$perproduk['idproduk']); ?>" class="img-prod">
                             <img class="img-fluid" src="<?php echo base_url('assets/foto/'.$perproduk['fotoproduk']); ?>" alt="">
                             <div class="overlay"></div>
                         </a>
                         <div class="text py-3 px-3">
-                            <h3><a href="<?php echo base_url('detail/'.$perproduk['idproduk']); ?>"><?php echo $perproduk['namaproduk']; ?></a></h3>
+                            <h3><a href="<?php echo site_url('produk/detail/'.$perproduk['idproduk']); ?>"><?php echo $perproduk['namaproduk']; ?></a></h3>
                             <div class="d-flex">
                                 <div class="pricing">
                                     <p class="price"><span>Rp <?php echo number_format($perproduk['hargaproduk']); ?></span></p>

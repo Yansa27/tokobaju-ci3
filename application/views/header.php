@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="<?= base_url('produk') ?>" class="nav-link">Produk</a></li>
+                <li class="nav-item"><a href="<?= site_url('produk') ?>" class="nav-link">Produk</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -72,10 +72,10 @@
                             <a class="dropdown-item" href="<?= base_url('akun') ?>">Profil Akun</a>
                             <a class="dropdown-item" href="<?= base_url('keranjang') ?>">Keranjang</a>
                             <a class="dropdown-item" href="<?= base_url('riwayat') ?>">Riwayat Pembelian</a>
-                            <a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a>
+                            <a class="dropdown-item" href="<?= site_url('login/logout') ?>">Logout</a>
                         <?php else : ?>
-                            <a class="dropdown-item" href="<?= base_url('login') ?>">Login</a>
-                            <a class="dropdown-item" href="<?= base_url('daftar') ?>">Daftar</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/login') ?>">Login</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/login/register') ?>">Daftar</a>
                         <?php endif; ?>
                     </div>
                 </li>

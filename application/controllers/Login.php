@@ -8,54 +8,87 @@ class Login extends CI_Controller {
         parent::__construct();
         // Load model pengguna
         $this->load->model('Pengguna_model');
+        $this->load->model('Kategori_model');
         $this->load->database();
-        $this->load->helper('url');
-        $this->load->library('session');
-
+        $this->load->helper(['url', 'form']);
+        $this->load->library(['session', 'form_validation']);
     }
 
     // Menampilkan halaman login
     public function index()
     {
-        // Menampilkan halaman login
-        $this->load->view('login');
+        $data['datakategori'] = $this->Kategori_model->get_all_kategori();
+        $this->load->view('login', $data);
     }
 
     // Menangani autentikasi login
     public function authenticate()
     {
-        // Ambil data dari form login
         $email = $this->input->post('email');
-        $password = $this->input->post('password'); // Menggunakan MD5 untuk hashing password
+        $password = $this->input->post('password'); // Gunakan hashing password di model
 
-        // Verifikasi login
         $user = $this->Pengguna_model->get_user($email, $password);
 
         if ($user) {
-            // Set session berdasarkan level pengguna
             $this->session->set_userdata('pengguna', $user);
 
             if ($user['level'] == 'Pelanggan') {
-                redirect('home'); // Arahkan ke halaman utama
+                redirect('home');
             } elseif ($user['level'] == 'Admin') {
-                redirect('admin/dashboard'); // Arahkan ke halaman admin
+                redirect('admin/dashboard');
             }
         } else {
-            // Jika login gagal, tampilkan pesan error
             $this->session->set_flashdata('error', 'Gagal login, cek akun Anda.');
-            redirect('login'); // Kembali ke halaman login
+            redirect('login');
         }
     }
 
     // Fungsi logout
     public function logout()
     {
-        // Hapus semua session pengguna
         $this->session->unset_userdata('pengguna');
         $this->session->sess_destroy();
-    
-        // Arahkan kembali ke halaman login
         redirect('login');
     }
-    
+
+    // Menampilkan halaman register
+    public function register()
+{
+    // Tampilkan halaman register
+    $this->load->view('register');
+}
+
+public function process_register()
+{
+    // Ambil data dari form registrasi
+    $nama = $this->input->post('nama');
+    $email = $this->input->post('email');
+    $password = $this->input->post('password');
+    $alamat = $this->input->post('alamat');
+    $telepon = $this->input->post('telepon');
+
+    // Validasi apakah email sudah terdaftar
+    $this->load->model('Pengguna_model');
+    $existing_user = $this->Pengguna_model->check_email_exists($email);
+
+    if ($existing_user) {
+        $this->session->set_flashdata('error', 'Pendaftaran gagal, email sudah digunakan.');
+        redirect('register');  // Kembali ke halaman register
+    } else {
+        // Simpan data pengguna ke database
+        $data = [
+            'nama' => $nama,
+            'email' => $email,
+            'password' => $password, // Enkripsi password
+            'alamat' => $alamat,
+            'telepon' => $telepon,
+            'level' => 'Pelanggan',
+        ];
+        $this->Pengguna_model->insert_user($data);
+
+        $this->session->set_flashdata('success', 'Pendaftaran berhasil, silakan login.');
+        redirect('login');  // Arahkan ke halaman login
+    }
+}
+
 }
