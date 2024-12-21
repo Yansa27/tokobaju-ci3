@@ -6,6 +6,7 @@ class Keranjang extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Produk_model'); // Load model untuk produk
+        $this->load->model('Kategori_model');
         $this->load->library('session'); // Pastikan library session terload
         $this->load->helper(['url', 'form']);
     }
@@ -13,7 +14,7 @@ class Keranjang extends CI_Controller {
     public function index()
     {
         $data['keranjang'] = [];
-
+        $data['datakategori'] = $this->Kategori_model->get_all_kategori();
         if (!empty($this->session->userdata('keranjang'))) {
             $keranjang = $this->session->userdata('keranjang');
             foreach ($keranjang as $idproduk => $jumlah) {

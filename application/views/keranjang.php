@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>
 
-<div class="hero-wrap hero-bread" style="background-image: url('home/images/fc2.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url('<?= base_url('assets/home/images/fc2.jpg'); ?>');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -32,7 +32,7 @@
                                 <?php foreach ($keranjang as $item) : ?>
                                     <tr class="text-center">
                                         <td class="product-remove">
-                                            <a href="<?= base_url('keranjang/hapus/' . $item['idproduk']) ?>">
+                                            <a href="<?= base_url('index.php/keranjang/hapus/' . $item['idproduk']) ?>">
                                                 <span class="ion-ios-close"></span>
                                             </a>
                                         </td>
@@ -68,7 +68,7 @@
                 <p class="text-center"> 
                     <a href="<?= base_url('') ?>" class="btn btn-warning"><i class="fa fa-cart-plus"></i> Lanjutkan Belanja</a>
                     &nbsp;
-                    <a href="<?= base_url('checkout') ?>" class="btn btn-danger">Checkout</a>
+                    <a href="<?= base_url('index.php/checkout') ?>" class="btn btn-danger">Checkout</a>
                 </p>
             </div>
         </div>

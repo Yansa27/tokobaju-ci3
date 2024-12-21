@@ -9,6 +9,17 @@ class Kategori_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getAllKategori() {
+        $query = $this->db->get('kategori');
+        return $query->result_array();
+    }
+
+    public function getKategoriById($id_kategori) {
+        $this->db->where('id_kategori', $id_kategori);
+        $query = $this->db->get('kategori');
+        return $query->row_array();
+    }
+
     // Mendapatkan semua kategori
     public function get_all_kategori() {
         $query = $this->db->get('kategori'); // Mengambil semua data dari tabel kategori

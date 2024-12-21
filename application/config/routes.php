@@ -63,3 +63,17 @@ $route['keranjang/tambah'] = 'keranjang/tambah';
 $route['keranjang/hapus/(:num)'] = 'keranjang/hapus/$1';
 $route['checkout'] = 'keranjang/checkout';
 
+$route['kategori/(:num)'] = 'kategori/view/$1';
+
+$route['checkout'] = 'Checkout/index';
+$route['checkout/process'] = 'Checkout/process';
+$route['riwayat'] = 'Riwayat/index';
+$route['riwayat/selesai'] = 'Riwayat/selesai';
+
+$route['pembayaran/(:num)'] = 'Pembayaran/index/$1';
+$route['pembayaran/upload'] = 'Pembayaran/uploadBukti';
+$route['pembayaran/success'] = 'Pembayaran/success';
+
+
+
+

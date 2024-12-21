@@ -54,8 +54,9 @@ class Login extends CI_Controller {
     // Menampilkan halaman register
     public function register()
 {
+    $data['datakategori'] = $this->Kategori_model->get_all_kategori();
     // Tampilkan halaman register
-    $this->load->view('register');
+    $this->load->view('register', $data);
 }
 
 public function process_register()

@@ -9,6 +9,7 @@ class Home extends CI_Controller {
         // Memuat model
         $this->load->model('Produk_model');
         $this->load->model('Kategori_model');
+        $this->load->library('session');
         
         // Memuat helper URL untuk base_url()
         $this->load->helper('url');
@@ -37,6 +38,7 @@ class Home extends CI_Controller {
         // Load model dan library yang dibutuhkan
         $this->load->model('Produk_model');
         $this->load->model('Ulasan_model');
+        $data['datakategori'] = $this->Kategori_model->get_all_kategori();
         
         // Ambil data produk berdasarkan ID
         $data['detail'] = $this->Produk_model->getDetailProduk($idproduk);

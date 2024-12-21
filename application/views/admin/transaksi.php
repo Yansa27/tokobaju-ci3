@@ -111,7 +111,7 @@
                                                         </ul>
                                                     </td>
                                                     <td><?= date('d-m-Y', strtotime($row['tanggalbeli'])); ?></td>
-                                                    <td>Rp. <?= number_format($row['totalbeli'] + $row['ongkir']); ?></td>
+                                                    <td>Rp. <?= number_format($row['totalbeli']); ?></td>
                                                     <td><?= $row['statusbeli']; ?></td>
                                                     <td>
                                                         <a href="<?= site_url('admin/detailTransaksi/' . $row['idbeli']); ?>" class="btn btn-info">Detail</a>

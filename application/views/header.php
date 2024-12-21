@@ -61,7 +61,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <?php foreach ($datakategori as $value) : ?>
-                            <a href="<?= base_url('kategori/' . $value["id_kategori"]) ?>" class="dropdown-item"><?= $value["nama_kategori"] ?></a>
+                            <a href="<?= base_url('index.php/kategori/' . $value["id_kategori"]) ?>" class="dropdown-item"><?= $value["nama_kategori"] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </li>
@@ -70,7 +70,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <?php if ($this->session->userdata('pengguna')) : ?>
                             <a class="dropdown-item" href="<?= base_url('akun') ?>">Profil Akun</a>
-                            <a class="dropdown-item" href="<?= base_url('keranjang') ?>">Keranjang</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/keranjang') ?>">Keranjang</a>
                             <a class="dropdown-item" href="<?= base_url('riwayat') ?>">Riwayat Pembelian</a>
                             <a class="dropdown-item" href="<?= site_url('login/logout') ?>">Logout</a>
                         <?php else : ?>
@@ -79,13 +79,19 @@
                         <?php endif; ?>
                     </div>
                 </li>
-                <?php if ($this->session->userdata('pengguna')) : ?>
-                    <li class="nav-item cta cta-colored">
-                        <a href="<?= base_url('keranjang') ?>" class="nav-link">
-                            <span class="icon-shopping_cart"></span>[<span class="cart-item-total"><?= isset($keranjang) ? array_sum($keranjang) : 0; ?></span>]
-                        </a>
-                    </li>
-                <?php endif; ?>
+                <?php
+$keranjang = $this->session->userdata('keranjang');
+$keranjang_total = isset($keranjang) ? array_sum($keranjang) : 0;
+?>
+
+<?php if ($this->session->userdata('pengguna')) : ?>
+    <li class="nav-item cta cta-colored">
+        <a href="<?= base_url('index.php/keranjang') ?>" class="nav-link">
+            <span class="icon-shopping_cart"></span>[<span class="cart-item-total"><?= $keranjang_total; ?></span>]
+        </a>
+    </li>
+<?php endif; ?>
+
             </ul>
         </div>
     </div>

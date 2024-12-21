@@ -276,11 +276,10 @@ class Admin extends CI_Controller {
     public function updateStatusPembelian($idbeli)
     {
         // Ambil data status pembelian dan resi pengiriman dari input form
-        $resi = $this->input->post('resi');
         $statusbeli = $this->input->post('statusbeli');
 
         // Memanggil model untuk mengupdate status pembelian
-        if ($this->Pembelian_model->update_status($idbeli, $resi, $statusbeli)) {
+        if ($this->Pembelian_model->update_status($idbeli, $statusbeli)) {
             $this->session->set_flashdata('success', 'Status pembelian berhasil diperbarui');
         } else {
             $this->session->set_flashdata('error', 'Gagal memperbarui status pembelian');

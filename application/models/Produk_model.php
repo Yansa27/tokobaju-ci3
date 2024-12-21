@@ -12,6 +12,12 @@ class Produk_model extends CI_Model {
         return $query->row_array();
     }
 
+    public function getProdukByKategori($id_kategori) {
+        $this->db->where('id_kategori', $id_kategori);
+        $query = $this->db->get('produk');
+        return $query->result_array();
+    }
+
     // Mendapatkan semua data produk beserta kategori
     public function getAllProduk() {
         $this->db->select('produk.*, kategori.nama_kategori');

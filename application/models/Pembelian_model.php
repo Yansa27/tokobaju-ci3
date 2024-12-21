@@ -7,6 +7,26 @@ class Pembelian_model extends CI_Model {
         parent::__construct();
     }
 
+    public function updatePembelian($idpem, $data)
+    {
+        $this->db->where('idbeli', $idpem);
+        return $this->db->update('pembayaran', $data);
+    }
+    public function updateStatusPembelian($id, $status) {
+        $this->db->where('idbeli', $id);
+        $this->db->update('pembelian', ['statusbeli' => $status]);
+    }
+
+
+    public function getPembelian_ById($idpem) {
+        $this->db->select('pembelian.*, pengguna.nama, pengguna.telepon, pengguna.email');
+        $this->db->from('pembelian');
+        $this->db->join('pengguna', 'pengguna.id = pembelian.id', 'left');
+        $this->db->where('pembelian.idbeli', $idpem);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
 
     // Mendapatkan detail pembelian berdasarkan ID
     public function get_detail_pembelian($idbeli) {
@@ -44,10 +64,30 @@ class Pembelian_model extends CI_Model {
     }
 
     // Update status pembelian dan resi
-    public function update_status($idbeli, $resi, $statusbeli) {
-        $this->db->set('resipengiriman', $resi);
+    public function update_status($idbeli, $statusbeli) {
         $this->db->set('statusbeli', $statusbeli);
         $this->db->where('idbeli', $idbeli);
         return $this->db->update('pembelian');
     }
+
+
+
+    public function getPembelianById($id) {
+        return $this->db->get_where('pembelian', ['idbeli' => $id])->row_array();
+    }
+
+    public function getProdukByPembelian($id) {
+        return $this->db->get_where('pembelianproduk', ['idbeli' => $id])->result_array();
+    }
+
+    public function insertPembayaran($data)
+{
+    // Menyimpan data ke tabel pembayaran
+    $this->db->insert('pembayaran', $data);
+    return $this->db->affected_rows() > 0;
 }
+
+
+}
+
+

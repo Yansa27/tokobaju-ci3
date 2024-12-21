@@ -6,6 +6,7 @@ class Pembelian extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Pembelian_model'); // Memuat model
+        $this->load->library('session');
     }
 
     public function index() {
