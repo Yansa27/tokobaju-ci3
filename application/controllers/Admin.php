@@ -20,10 +20,11 @@ class Admin extends CI_Controller {
 
         $user = $this->session->userdata('pengguna');
 
-        if (!$user || $user['level'] != 'Admin') {
+        if (!$user || ($user['level'] != 'Admin' && $user['level'] != 'Penjahit')) {
             $this->session->sess_destroy();  
             redirect('login'); 
         }
+        
     }
 
     public function index() {
@@ -45,6 +46,53 @@ class Admin extends CI_Controller {
         // Load view dengan data
         $this->load->view('admin/dashboard', $data);
     }
+    public function indexPenjahit() {
+        // Ambil data dari model
+        $this->load->model('Dashboard_model'); // Memanggil model Dashboard_model
+
+        // Ambil data untuk dashboard
+        $data['jumlahkategori'] = $this->Dashboard_model->get_kategori_count();
+        $data['jumlahproduk'] = $this->Dashboard_model->get_produk_count();
+        $data['jumlahmember'] = $this->Dashboard_model->get_member_count();
+        $data['jumlahpembelian'] = $this->Dashboard_model->get_pembelian_count();
+
+        // Grafik penjualan bulanan
+        $data['penjualangrafik'] = $this->Dashboard_model->get_penjualangrafik();
+
+        // Set judul halaman
+        $data['title'] = 'Dashboard Penjahit';
+
+        // Load view dengan data
+        $this->load->view('penjahit/dashboard', $data);
+    }
+
+    public function createPengguna()
+    {
+        $data['title'] = 'Tambah Pengguna';
+        $this->load->view('admin/create_pengguna', $data);
+    }
+
+    public function storePengguna()
+    {
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'email' => $this->input->post('email'),
+            'telepon' => $this->input->post('telepon'),
+            'alamat' => $this->input->post('alamat'),
+            'password' => $this->input->post('password'), // Simpan tanpa hashing (sesuai permintaan)
+            'level' => $this->input->post('level')
+        ];
+
+        if ($this->Pengguna_model->insert($data)) {
+            $this->session->set_flashdata('message', 'Pengguna berhasil ditambahkan.');
+            redirect('admin/pengguna');
+        } else {
+            $this->session->set_flashdata('error', 'Gagal menambahkan pengguna.');
+            redirect('admin/createPengguna');
+        }
+    }
+
+
 
     public function beranda()
     {

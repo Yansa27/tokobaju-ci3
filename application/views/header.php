@@ -47,7 +47,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="background-color: #FF7F7F !important;">
     <div class="container">
         <a class="navbar-brand" href="<?= base_url('/') ?>"> 
-            <img src="" width="30px" style="border-radius: 10px;">&nbsp;<span class="">&nbsp; FCBRANDSTORE</span>
+            <img src="" width="30px" style="border-radius: 10px;">&nbsp;<span class="">&nbsp; HRShopku Baju Bodo
+            </span>
         </a> 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -56,6 +57,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="<?= base_url('/index.php/customorders') ?>" class="nav-link">Costum Produk</a></li>
                 <li class="nav-item"><a href="<?= site_url('produk') ?>" class="nav-link">Produk</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
@@ -69,9 +71,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akun</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <?php if ($this->session->userdata('pengguna')) : ?>
-                            <a class="dropdown-item" href="<?= base_url('akun') ?>">Profil Akun</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/akun') ?>">Profil Akun</a>
                             <a class="dropdown-item" href="<?= base_url('index.php/keranjang') ?>">Keranjang</a>
-                            <a class="dropdown-item" href="<?= base_url('riwayat') ?>">Riwayat Pembelian</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/riwayat') ?>">Riwayat Pembelian</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/custom-order/history') ?>">Riwayat Costum Order</a>
                             <a class="dropdown-item" href="<?= site_url('login/logout') ?>">Logout</a>
                         <?php else : ?>
                             <a class="dropdown-item" href="<?= base_url('index.php/login') ?>">Login</a>

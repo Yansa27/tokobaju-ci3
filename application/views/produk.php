@@ -1,13 +1,13 @@
 <?php $this->load->view('header'); ?>
-<div class="hero-wrap hero-bread" style="background-image: url('home/images/fc2.jpg');">
+<div class="hero-wrap hero-bread" style="background-color: #dc3545;">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
+            <div class="col-md-9 ftco-animate text-center text-white text-light ">
                 <p class="breadcrumbs">
-                    <span class="mr-2"><a href="<?= base_url(); ?>">Home</a></span> 
-                    <span>Products</span>
+                    <span class="mr-2 text-light"><a class="text-light" href="<?= base_url(); ?>">Home</a></span> 
+                    <span class="text-light">Products</span>
                 </p>
-                <h1 class="mb-0 bread"><?= $title; ?></h1>
+                <h1 class="mb-0 bread text-light"><?= $title; ?></h1>
             </div>
         </div>
     </div>
@@ -32,8 +32,13 @@
                                     </div>
                                 </div>
                                 <p class="bottom-area d-flex px-3">
-                                    <a href="<?= base_url('index.php/produk/detail/' . $item['idproduk']); ?>" class="buy-now text-center py-2">
-                                        Detail <span><i class="ion-ios-cart ml-1"></i></span>
+                                    <a href="<?= base_url('index.php/produk/detail/' . $item['idproduk']); ?>" 
+                                    class="buy-now text-center py-2" 
+                                    style="background-color: #dc3545; color: #fff; text-decoration: none;" 
+                                    onmouseover="this.style.backgroundColor='#b02a37';" 
+                                    onmouseout="this.style.backgroundColor='#dc3545';">
+                                        Detail 
+                                        <span><i class="ion-ios-cart ml-1"></i></span>
                                     </a>
                                 </p>
                             </div>

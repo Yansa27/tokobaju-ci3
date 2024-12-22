@@ -50,6 +50,8 @@ $route['admin/updateStatusPembelian/(:num)'] = 'admin/updateStatusPembelian/$1';
 $route['admin/hapusproduk/(:num)'] = 'admin/hapusProduk/$1'; // Jika Anda menggunakan logout sebagai metode terpisah
 
 $route['admin/pengguna'] = 'admin/pengguna'; // Menampilkan daftar pengguna
+$route['admin/createPengguna'] = 'admin/createPengguna';
+$route['admin/storePengguna'] = 'admin/storePengguna';
 $route['admin/hapusPengguna/(:num)'] = 'admin/hapusPengguna/$1';
 
 
@@ -74,6 +76,24 @@ $route['pembayaran/(:num)'] = 'Pembayaran/index/$1';
 $route['pembayaran/upload'] = 'Pembayaran/uploadBukti';
 $route['pembayaran/success'] = 'Pembayaran/success';
 
+$route['akun'] = 'Akun/index'; // Menampilkan halaman profil
+$route['akun/update'] = 'Akun/update'; // Menyimpan perubahan profil
 
 
 
+$route['customorders'] = 'CustomOrderController/index'; // Menampilkan semua custom orders
+$route['custom-order/history'] = 'CustomOrderController/history';
+
+$route['customorders/create'] = 'CustomOrderController/create'; // Form untuk tambah order
+$route['customorders/store'] = 'CustomOrderController/store'; // Proses tambah order
+$route['customorders/edit/(:num)'] = 'CustomOrderController/edit/$1'; // Form untuk edit order berdasarkan ID
+$route['customorders/update/(:num)'] = 'CustomOrderController/update/$1'; // Proses update order berdasarkan ID
+$route['customorders/delete/(:num)'] = 'CustomOrderController/delete/$1'; // Proses hapus order berdasarkan ID
+
+$route['custom-order/history-admin'] = 'CustomOrderController/historyAdmin'; // Menampilkan halaman riwayat admin
+$route['custom-order/update-status/(:num)'] = 'CustomOrderController/updateStatus/$1'; // Mengupdate status dan catatan
+
+$route['penjahit/history'] = 'CustomOrderController/historyPenjahit';
+$route['penjahit/update-status/(:num)'] = 'CustomOrderController/updateStatusPenjahit/$1';
+
+$route['penjahit/dashboard'] = 'admin/indexPenjahit';

@@ -25,23 +25,40 @@ class Login extends CI_Controller {
     public function authenticate()
     {
         $email = $this->input->post('email');
-        $password = $this->input->post('password'); // Gunakan hashing password di model
-
+        $password = $this->input->post('password'); // Password langsung dibandingkan
+    
+        // Cek user berdasarkan email dan password
         $user = $this->Pengguna_model->get_user($email, $password);
-
+    
         if ($user) {
+            // Set session pengguna
             $this->session->set_userdata('pengguna', $user);
-
-            if ($user['level'] == 'Pelanggan') {
-                redirect('home');
-            } elseif ($user['level'] == 'Admin') {
-                redirect('admin/dashboard');
+    
+            // Arahkan berdasarkan level pengguna
+            switch ($user['level']) {
+                case 'Pelanggan':
+                    redirect('home');
+                    break;
+                case 'Admin':
+                    redirect('admin/dashboard');
+                    break;
+                case 'Penjahit':
+                    redirect('penjahit/dashboard');
+                    break;
+                default:
+                    // Jika level tidak dikenal
+                    $this->session->set_flashdata('error', 'Level pengguna tidak valid.');
+                    redirect('login');
+                    break;
             }
         } else {
-            $this->session->set_flashdata('error', 'Gagal login, cek akun Anda.');
+            // Email atau password salah
+            $this->session->set_flashdata('error', 'Email atau password salah.');
             redirect('login');
         }
     }
+    
+
 
     // Fungsi logout
     public function logout()

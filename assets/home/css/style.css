@@ -8617,7 +8617,7 @@ h1, h2, h3, h4, h5,
       color: #ffa45c; }
       .btn.btn-primary.btn-outline-primary:hover {
         border: 1px solid transparent;
-        background: #ffa45c;
+        background: #dc3545;
         color: #fff; }
   .btn.btn-white {
     background: #fff;
@@ -8727,7 +8727,7 @@ h1, h2, h3, h4, h5,
       padding: 2px 15px;
       color: #000000;
       font-weight: 300;
-      background: #ffa45c; }
+      background: #dc3545; }
     .product .img-prod img {
       -webkit-transform: scale(1);
       -moz-transform: scale(1);
@@ -8817,13 +8817,13 @@ h1, h2, h3, h4, h5,
         background: #000000;
         color: #fff; }
         .product .text .bottom-area a.add-to-cart:hover {
-          background: #ffa45c;
+          background: #dc3545;
           color: #fff; }
       .product .text .bottom-area a.buy-now {
         background: #fff;
         color: #000000; }
         .product .text .bottom-area a.buy-now:hover {
-          background: #ffa45c;
+          background: #dc3545 !important;
           color: #fff; }
       @media (max-width: 991.98px) {
         .product .text .bottom-area {

@@ -26,9 +26,29 @@ class Pengguna_model extends CI_Model {
 
     public function getPengguna()
     {
-        $this->db->where('level', 'Pelanggan');
+        $this->db->where_in('level', ['Pelanggan', 'Penjahit']);
         $query = $this->db->get('pengguna');
         return $query->result_array();
+    }
+    
+
+    public function getPenggunaById($id)
+    {
+        $this->db->where('id', $id);
+        $query = $this->db->get('pengguna');
+        return $query->row_array(); // Mengembalikan data pengguna dalam bentuk array
+    }
+
+    public function insert($data)
+{
+    return $this->db->insert('pengguna', $data);
+}
+
+
+    public function updatePengguna($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('pengguna', $data); // Update data pengguna
     }
 
     // Fungsi untuk menghapus pengguna berdasarkan ID

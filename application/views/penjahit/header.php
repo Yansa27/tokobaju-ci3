@@ -22,43 +22,16 @@
             </a>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link text-white" href="<?= site_url('admin/dashboard'); ?>">
+                <a class="nav-link text-white" href="<?= site_url('penjahit/dashboard'); ?>">
                     <i class="fas fa-fw fa-book text-white"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link text-white" href="<?= site_url('admin/kategori'); ?>">
-                    <i class="fas fa-fw fa-list text-white"></i>
-                    <span>Kategori</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?= site_url('admin/produk'); ?>">
-                    <i class="fas fa-fw fa-pen text-white"></i>
-                    <span>Produk</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?= site_url('admin/transaksi'); ?>">
-                    <i class="fas fa-fw fa-home text-white"></i>
-                    <span>Transaksi</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?= site_url('custom-order/history-admin'); ?>">
+                <a class="nav-link text-white" href="<?= site_url('penjahit/history'); ?>">
                     <i class="fas fa-fw fa-home text-white"></i>
                     <span>History Costum Order</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="<?= site_url('admin/pengguna'); ?>">
-                    <i class="fas fa-fw fa-users text-white"></i>
-                    <span>Akun Member</span>
                 </a>
             </li>
         </ul>

@@ -12,7 +12,12 @@
                                         <div class="col-md-12 mb-4">
                                             <div class="card shadow mb-4">
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                     <h6 class="m-0 font-weight-bold text-primary"><?= $title; ?></h6>
+                                                </div>
+                                                <a href="<?= site_url('admin/createPengguna'); ?>" class="btn btn-primary">Tambah Pengguna</a>
+
+
                                                 </div>
                                                 <div class="card-body">
                                                     <!-- Flash Message -->
