@@ -13,7 +13,7 @@
                             <div class="horizontal">
                                 <h3 class="vr" style="background-image: url(<?php echo base_url('assets/home/images/divider.jpg'); ?>);">Best eCommerce Online Shop</h3>
                                 <h1 class="mb-4 mt-3">Catch Your Own <br><span>Stylish &amp; Look</span></h1>
-                                <p><a href="<?php echo base_url('produk'); ?>" class="btn btn-primary px-5 py-3 mt-3">Discover Now</a></p>
+                                <p><a href="<?php echo base_url('index.php/produk'); ?>" class="btn btn-primary px-5 py-3 mt-3">Discover Now</a></p>
                             </div>
                         </div>
                     </div>

@@ -25,14 +25,22 @@ class Home extends CI_Controller {
     }
 
     public function produk() {
-        // Ambil data produk dan kategori dari model
-        $data['produk'] = $this->Produk_model->getAllProduk();
+        // Ambil keyword pencarian dari input GET (jika ada)
+        $keyword = $this->input->get('search', TRUE);
+    
+        // Ambil data produk berdasarkan pencarian dari model
+        $data['produk'] = $this->Produk_model->get_produkk($keyword);
+    
+        // Ambil data kategori dari model
         $data['datakategori'] = $this->Kategori_model->get_all_kategori();
+    
+        // Set judul halaman
         $data['title'] = 'Collection Products';
-
+    
         // Muat tampilan halaman produk
         $this->load->view('produk', $data); // View khusus halaman produk
     }
+    
 
     public function detail($idproduk) {
         // Load model dan library yang dibutuhkan

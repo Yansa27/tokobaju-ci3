@@ -27,6 +27,15 @@ class Produk_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_produkk($keyword = '') {
+        if (!empty($keyword)) {
+            // Pencarian berdasarkan nama produk
+            $this->db->like('namaproduk', $keyword);
+        }
+        $query = $this->db->get('produk');  // Ambil data produk
+        return $query->result_array();  // Kembalikan hasilnya
+    }
+
     public function getDetailProduk($idproduk) {
         return $this->db->get_where('produk', ['idproduk' => $idproduk])->row_array();
     }

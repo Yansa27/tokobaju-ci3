@@ -14,6 +14,7 @@ class Kategori extends CI_Controller {
     public function view($id) {
         // Ambil data kategori berdasarkan ID
         $kategori = $this->Kategori_model->getKategoriById($id);
+        $datakategori = $this->Kategori_model->get_all_kategori();
 
         // Ambil semua produk dalam kategori ini
         $produk = $this->Produk_model->getProdukByKategori($id);
@@ -25,7 +26,8 @@ class Kategori extends CI_Controller {
         $data = [
             'kategori' => $kategori,
             'produk' => $produk,
-            'semua_kategori' => $semua_kategori
+            'semua_kategori' => $semua_kategori,
+            'datakategori' => $datakategori
         ];
 
         // Load view

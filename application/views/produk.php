@@ -1,16 +1,33 @@
 <?php $this->load->view('header'); ?>
+
+<!-- Form Pencarian -->
 <div class="hero-wrap hero-bread" style="background-color: #dc3545;">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center text-white text-light ">
+            <div class="col-md-9 ftco-animate text-center text-white text-light">
                 <p class="breadcrumbs">
-                    <span class="mr-2 text-light"><a class="text-light" href="<?= base_url(); ?>">Home</a></span> 
+                    <span class="mr-2 text-light"><a class="text-light" href="<?= base_url(); ?>">Home</a></span>
                     <span class="text-light">Products</span>
                 </p>
                 <h1 class="mb-0 bread text-light"><?= $title; ?></h1>
             </div>
         </div>
     </div>
+</div>
+
+<br>
+
+<div class="container bg-light ">
+    <form action="<?= base_url('index.php/produk'); ?>" method="get" class="d-flex justify-content-center">
+        <div class="input-group w-75">
+            <input type="text" class="form-control" name="search" placeholder="Search products..." value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>" aria-label="Search products">
+            <div class="input-group-append">
+                <button class="btn btn-danger" type="submit">
+                    <i class="ion-ios-search-strong"></i> Search
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <section class="ftco-section bg-light">
