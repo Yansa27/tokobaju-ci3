@@ -63,12 +63,12 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
-                            <a onclick="return confirm('Apakah Anda Yakin Ingin Keluar ?');" class="nav-link" href="index.php?halaman=logout">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Keluar</span>
-                            </a>
-                        </li>
-                    </ul>
+                            <li class="nav-item dropdown no-arrow">
+                                <a onclick="return confirm('Apakah Anda Yakin Ingin Keluar ?');" class="nav-link" href="<?= base_url('index.php/login/logout')?>">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Keluar</span>
+                                </a>
+                            </li>
+                        </ul>
                 </nav>
 
                 <div class="container-fluid">

@@ -23,4 +23,10 @@ class Checkout_model extends CI_Model {
     public function get_detail($idpembelian) {
         return $this->db->get_where('pembelianproduk', ['idbeli' => $idpembelian])->result_array();
     }
+
+    public function update_stok_produk($idproduk, $stokbaru) {
+        $this->db->where('idproduk', $idproduk);
+        $this->db->update('produk', ['stokproduk' => $stokbaru]);
+    }
+    
 }

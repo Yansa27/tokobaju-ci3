@@ -63,7 +63,7 @@ class Checkout extends CI_Controller {
                 $keranjang = $this->session->userdata('keranjang');
                 foreach ($keranjang as $idproduk => $jumlah) {
                     $produk = $this->Checkout_model->get_produk($idproduk);
-                    
+        
                     if ($produk) {
                         $data_detail = [
                             'idbeli' => $idpembelian, // Sesuai dengan foreign key idbeli
@@ -75,6 +75,15 @@ class Checkout extends CI_Controller {
                         ];
         
                         $this->Checkout_model->simpan_detail($data_detail);
+        
+                        // Kurangi stok produk
+                        $stokbaru = $produk['stokproduk'] - $jumlah;
+                        if ($stokbaru < 0) {
+                            // Stok tidak mencukupi
+                            $this->session->set_flashdata('error', 'Stok untuk produk ' . $produk['namaproduk'] . ' tidak mencukupi.');
+                            redirect('keranjang');
+                        }
+                        $this->Checkout_model->update_stok_produk($idproduk, $stokbaru);
                     }
                 }
         
@@ -85,6 +94,7 @@ class Checkout extends CI_Controller {
                 redirect('checkout');
             }
         }
+        
         
         
 
